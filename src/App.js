@@ -4,20 +4,17 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Franco Dell Aguila</h1>
+      <p>Desarrollador web • Apasionado por Odoo y automatización</p>
+
+      <h2>Proyectos</h2>
+      <ul>
+        <li>📦 Sistema de Gestión de Franquicias (TFG)</li>
+        <li>🌍 MapYourWorld – turismo gamificado</li>
+        <li>🤖 ChocoHub – automatización GitHub Actions</li>
+      </ul>
+
+      <p>Contacto: franco@example.com</p>
     </div>
   );
 }
