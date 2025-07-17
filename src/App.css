@@ -1054,6 +1054,9 @@ main {
 
 /* Responsive */
 @media (max-width: 1080px) {
+  main {
+    padding: 0 100px;
+  }
   .about,
   .jobs,
   .projects,
@@ -1064,6 +1067,45 @@ main {
 }
 
 @media (max-width: 768px) {
+  main {
+    padding: 0 50px;
+  }
+
+  .numbered-heading::before,
+  .numbered-heading::after {
+    width: 100px; /* Reducir líneas del título */
+  }
+
+  .jobs-inner {
+    flex-direction: column; /* Apilar tabs de skills verticalmente */
+    align-items: center;
+    gap: 30px;
+  }
+
+  .tab-list {
+    display: flex; /* Hacer que los tabs se muestren en fila */
+    overflow-x: auto; /* Permitir scroll horizontal si no caben */
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .tab-button {
+    border-left: none; /* Quitar borde izquierdo */
+    border-bottom: 2px solid var(--lightest-navy); /* Poner borde inferior */
+    padding: 10px 15px;
+    height: auto;
+    text-align: center;
+  }
+
+  .tab-button.active {
+    border-left: none;
+    border-bottom-color: var(--green);
+  }
+
+  .skills-list {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas para skills */
+  }
+
   .about,
   .jobs,
   .projects,
@@ -1101,7 +1143,9 @@ main {
   .project:nth-of-type(odd) .project-image,
   .project:nth-of-type(even) .project-image {
     grid-column: 1 / -1;
-    opacity: 0.7;
+    opacity: 0.5; /* Bajar opacidad para que el texto sea legible */
+    height: 100%;
+    object-fit: cover;
   }
   
   .social,
@@ -1123,6 +1167,30 @@ main {
 }
 
 @media (max-width: 480px) {
+  main {
+    padding: 0 20px; /* Reducir padding general */
+  }
+
+  .numbered-heading {
+    justify-content: flex-start; /* Alinear títulos a la izquierda */
+  }
+
+  .numbered-heading::before {
+    display: none; /* Ocultar línea izquierda del título */
+  }
+  .numbered-heading::after {
+    width: 100%; /* Hacer que la línea ocupe el espacio restante */
+  }
+
+  .skills-list {
+    grid-template-columns: repeat(2, 1fr); /* Mantener 2 columnas si es posible */
+    gap: 15px;
+  }
+
+  .project-description {
+    padding: 20px; /* Reducir padding de la descripción del proyecto */
+  }
+
   .about,
   .jobs,
   .projects,
