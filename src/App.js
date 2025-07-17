@@ -1,11 +1,24 @@
-import './App.css';
 import { useState, useEffect } from 'react';
+import './App.css';
 import mywImage from './assets/MYW.png';
 import ctImage from './assets/CT.png';
 import gelroyImage from './assets/TFG.png';
 
 function App() {
   const [activeSkillCategory, setActiveSkillCategory] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMenuOpen]);
 
   const skillCategories = [
     {
@@ -76,28 +89,58 @@ function App() {
     <a href="/" aria-label="home">FD</a>
   </div>
   
-  <nav className="nav">
-    <ol className="nav-list">
-      <li className="nav-item">
-        <a href="#about" className="nav-link">About</a>
-      </li>
-      <li className="nav-item">
-        <a href="#skills" className="nav-link">Skills</a>
-      </li>
-      <li className="nav-item">
-        <a href="#projects" className="nav-link">Projects</a>
-      </li>
-      <li className="nav-item">
-        <a href="#contact" className="nav-link">Contact</a>
-      </li>
-    </ol>
-  </nav>
-  
-  <div className="resume-button-container">
-    <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-      Resume
-    </a>
-  </div>
+  {/* Navegación para escritorio */}
+        <nav className="nav-desktop">
+          <ol className="nav-list">
+            <li className="nav-item">
+              <a href="#about" className="nav-link">About</a>
+            </li>
+            <li className="nav-item">
+              <a href="#skills" className="nav-link">Skills</a>
+            </li>
+            <li className="nav-item">
+              <a href="#projects" className="nav-link">Projects</a>
+            </li>
+            <li className="nav-item">
+              <a href="#contact" className="nav-link">Contact</a>
+            </li>
+          </ol>
+        </nav>
+        
+        <div className="resume-button-container-desktop">
+          <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+            Resume
+          </a>
+        </div>
+
+        {/* Botón de Hamburguesa para móvil */}
+        <div className="hamburger-container">
+          <button 
+            className={`hamburger-menu ${isMenuOpen ? 'active' : ''}`} 
+            onClick={toggleMenu}
+            aria-label="Menu"
+            aria-expanded={isMenuOpen}
+          >
+            <div className="hamburger-box">
+              <div className="hamburger-inner"></div>
+            </div>
+          </button>
+        </div>
+
+        {/* Menú lateral para móvil */}
+        <aside className={`mobile-nav ${isMenuOpen ? 'active' : ''}`}>
+          <nav>
+            <ol>
+              <li><a href="#about" onClick={toggleMenu}>About</a></li>
+              <li><a href="#skills" onClick={toggleMenu}>Skills</a></li>
+              <li><a href="#projects" onClick={toggleMenu}>Projects</a></li>
+              <li><a href="#contact" onClick={toggleMenu}>Contact</a></li>
+            </ol>
+            <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              Resume
+            </a>
+          </nav>
+        </aside>
 </header>
 
       <main className="main">
